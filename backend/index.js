@@ -19,7 +19,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: localClientURL,
+    origin: [localClientURL],
     credentials: true,
   })
 );
@@ -29,9 +29,10 @@ app.use(
     secret: process.env.APP_SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    // cookie: {
-    //   maxAge: 1000 * 60 * 60 * 24 * 7, // 1 semaine
-    // },
+    cookie: {
+      // maxAge: 1000 * 60 * 60 * 24 * 7, // 1 semaine
+      sameSite: "strict",
+    },
   })
 );
 

@@ -50,6 +50,7 @@ export const todoController = {
         message: `La tâche : "${todoNameToDelete}" a bien été supprimée !`,
       });
     } catch (error) {
+      console.log(error);
       res.status(400).json({
         message: error.message,
       });

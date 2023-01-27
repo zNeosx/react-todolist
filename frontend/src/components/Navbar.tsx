@@ -17,7 +17,7 @@ const Navbar = () => {
             alt="Your Company"
           />
           <Link to={"/"} className="ml-2 text-xl text-primary font-medium">
-            ToDoList
+            ToDoApp
           </Link>
         </div>
       </div>

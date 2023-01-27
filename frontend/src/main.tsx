@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
-  BrowserRouter,
   createBrowserRouter,
   createRoutesFromElements,
   Route,
@@ -10,25 +9,29 @@ import {
 import App from "./App";
 import "./index.css";
 import { ErrorPage } from "./pages/ErrorPage";
-import Home, { loader as homeLoader } from "./pages/Home";
-import { action as formAction } from "./components/todos/TodoFormComponent";
+import Home from "./pages/Home";
 import Root from "./Root";
+import TodoList from "./pages/TodoList";
+import { loader as todoloader } from "./components/todos/TodoLoader";
+import { action as todoAction } from "./components/todos/actions/TodoAction";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route
-      path="/"
-      element={<Root />}
-      errorElement={<ErrorPage />}
-      action={formAction}
-    >
-      <Route index element={<Home />} loader={homeLoader} />
+    <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
+      <Route index element={<Home />} />
+      <Route
+        path={"/todos"}
+        element={<TodoList />}
+        loader={todoloader}
+        action={todoAction}
+        errorElement={<ErrorPage />}
+      />
     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  // <React.StrictMode>
-  <RouterProvider router={router} />
-  // </React.StrictMode>
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );

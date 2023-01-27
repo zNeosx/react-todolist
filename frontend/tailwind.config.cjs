@@ -7,6 +7,9 @@ module.exports = {
         primary: "#6262EF",
         purpleLight: "#343C64",
         purpleDark: "#24344C",
+        icons: {
+          delete: "#e63946",
+        },
       },
       fontFamily: {
         poppins: "Poppins, sans-serif",

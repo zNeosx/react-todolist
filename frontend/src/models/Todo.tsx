@@ -1,5 +1,5 @@
 export interface ITodo {
-  _id: number | null;
+  _id: number;
   name: string;
   isDone: boolean;
   createdAt: Date;
